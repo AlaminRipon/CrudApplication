@@ -38,6 +38,7 @@ namespace CrudApplication.Controllers
                 };
                 context.Employees.Add(emp);
                 context.SaveChanges();
+                TempData["message"] = "Record Saved!";
                 return RedirectToAction("Index"); 
             }
             else
@@ -53,6 +54,7 @@ namespace CrudApplication.Controllers
             var emp = context.Employees.SingleOrDefault(e => e.Id == id);
             context.Employees.Remove(emp);
             context.SaveChanges();
+            TempData["message"] = "Record Deleted!";
             return RedirectToAction("Index");   
         }
         [HttpGet]
@@ -82,6 +84,7 @@ namespace CrudApplication.Controllers
             };
             context.Employees.Update(emp);
             context.SaveChanges();
+            TempData["message"] = "Record Edited!";
             return RedirectToAction("Index");
         }
     }
